@@ -7,20 +7,22 @@
   --header-height: 3rem;
 
   /*================ Colors ============= */
-  /* Color mode HSL(hue, saturation, lightness) */
-  --hue: 0;
-  --salt: 0%;
-  --title-color: hsl(var(--hue), var(--salt), 20%);
-  --title-color-dark: hsl(var(--hue), var(--sat), 0%);
-  --text-color: hsl(var(--hue), var(--sat), 46%);
-  --body-color: hsl(var(--hue), var(--sat), 98%);
-  --container-color: #fff;
-
-  /*================ Font and typegraphy ==============*/
-  --body-font: "Poppins", san-serif;
+   /*================ Colors ==============*/
+   --text-color-primary: rgba(0, 0, 0, 0.87);
+   --text-color-secondary: rgba(0, 0, 0, 0.8); /* Ajuste para el color del texto en modo claro */
+   --bg-color-primary: rgba(255, 255, 255, 1);
+   --bg-color-secondary: rgba(255, 255, 255, .87);
+ 
+   /*================ Input Colors ==============*/
+   --border-color: rgba(0, 0, 0, 0.1);
+   --input-background-color: rgba(255, 255, 255, 1);
+   --input-text-color: rgba(0, 0, 0, 0.87);
+ 
+   /*================ Icon Colors ==============*/
+   --icon-color: rgba(0, 0, 0, 0.8);
 
   /* .5rem = 8px | 1rem = 16px */
-  --big-font-size: 3.5rem;
+  --big-font-size: 3.3rem;
   --h1-font-size: 2.25rem;
   --h2-font-size: 1.5rem;
   --h3-font-size: 1.25rem;
@@ -28,6 +30,9 @@
   --small-font-size: 0.875rem;
   --smaller-font-size: 0.813rem;
   --tiny-font-size: 0.625rem;
+
+   /*================ Font weight ==============*/
+   --body-font: 'Poppins', sans-serif;
 
   /*================ Font weight ==============*/
   --font-normal: 400;
@@ -52,6 +57,19 @@
 
 }
 
+:root.dark {
+  --text-color-primary: rgba(255, 255, 255, 0.9);
+  --text-color-secondary: rgba(255, 255, 255, 0.8); /* Ajuste para el color del texto en modo oscuro */
+  --bg-color-secondary: rgba(48,50, 60); /* Ajuste para el color de fondo del cuerpo en modo oscuro */
+  --bg-color-primary: rgb(21, 22, 30); /* Ajuste para el color de fondo del contenedor en modo oscuro */
+  
+  --border-color: rgba(255, 255, 255, 0.1);
+  --input-background-color: rgba(0, 0, 0, 0.5);
+  --input-text-color: rgba(255, 255, 255, 0.87);
+
+  --icon-color: rgba(255, 255, 255, 0.8);
+}
+
 /* Responsive Typography */
 @media screen and (max-width: 992px) {
   :root {
@@ -64,6 +82,7 @@
     --smaller-font-size: .75rem
   }
 }
+
 /*================ BASE ==============*/
 * {
   box-sizing: border-box;
@@ -79,29 +98,49 @@ body,
 button,
 input,
 textarea {
-  font-family: var(--body-font);
+ 
   font-size: var(--normal-font-size);
 }
 
-body {
-  background-color: var(--body-color);
-  color: var(--text-color);
+body{
+  background-color: var(--bg-color-primary);
+  font-family: var(--body-font);
+}
+
+section{
+  background-color: var(--bg-color-primary);
 }
 
 h1,
 h2,
 h3 {
-  color: var(--title-color);
+  color: var(--text-color-primary);
   font-weight: var(--font-semi-bold);
+}
+
+p{
+  color: var(--text-color-primary);
+  line-height: 1.6rem;
 }
 
 ul {
   list-style: none;
 }
 
+
 a {
   text-decoration: none;
+  color: var(--text-color-primary);
 }
+
+span{
+  color: var(--text-color-primary);
+}
+
+i{
+  color: var(--text-color-primary);
+}
+
 
 button {
   cursor: pointer;
@@ -109,14 +148,21 @@ button {
   outline: none;
 }
 
+
 img {
   max-width: 100%;
   height: auto;
 }
 
+footer{
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-primary);
+}
+
 /*================ REUSABLE CSS CLASSES ==============*/
 .section {
-  padding: 6rem 0 2rem;
+  padding: 5rem 2rem;
+
 }
 
 .section__title {
@@ -149,15 +195,15 @@ img {
 /*================ BUTTONS ==============*/
 .button {
   display: inline-block;
-  background-color: var(--title-color);
-  color: var(--container-color);
+  background-color: var(--text-color-primary);
+  color: var(--bg-color-primary);
   padding: 1.25rem 2rem;
   border-radius: 1rem;
   font-weight: var(--font-medium);
 }
 
 .button:hover {
-  background-color: var(--title-color-dark);
+  background-color: var(--text-color-secondary);
 }
 
 .button__icon {
@@ -172,20 +218,46 @@ img {
 /*=============== BREAKPOINTS =============== */
 
 /* For large devices */
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
 
+  .section {
+    padding: 4rem 2rem;
+  }
+
+  .container {
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
+  }
+
+  .button {
+    padding: 1rem 1.75rem;
+  }
+
+  .button__icon {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 /* For medium devices */
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
+
+  .section {
+    padding: 2rem 2rem;
+  }
 
 }
 
-@media screen and (max-width: 576px){
-
-}
+@media screen and (max-width: 576px) {}
 
 /* For small devices */
-@media screen and (max-width: 350px){
+@media screen and (max-width: 350px) {
+  :root {
+    --big-font-size: 2.25rem
+  }
 
+  .container {
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+  }
 }
