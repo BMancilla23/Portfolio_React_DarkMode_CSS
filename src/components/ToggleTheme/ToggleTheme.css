@@ -1,0 +1,45 @@
+.toggletheme {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: var(--z-modal);
+}
+
+.toggletheme__button {
+    background-color: var(--container-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 6px var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: backgroud-color .3s, color .3s, transform .3s;
+
+}
+
+.toggletheme__button:hover {
+    background-color: var(--title-color);
+    color: var(--container-color);
+}
+
+.toggletheme__icon {
+    margin-top: .9rem;
+}
+
+.toggletheme.dark .toggletheme__button {
+    background-color: var(--text-color);
+    color: var(--container-color);
+}
+
+@media screen and (max-width: 768px) {
+    .toggletheme {
+      top: 6rem; /* Posición desde la parte superior en pantallas medianas */
+      bottom: auto; /* Elimina la posición desde la parte inferior */
+      right: 3rem;
+    }
+  }
